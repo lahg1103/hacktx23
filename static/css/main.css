@@ -1,6 +1,8 @@
 :root {
-    --background-blue : #e4efff;
-    --font-blue: #3371A9;
+    --font-blue : #C8E5FF;
+    --background-blue: #272B32;
+    --star-on: #F6D98C;
+    --star-off: transparent;
     font-family: 'Roboto', Arial, Helvetica, system-ui, sans-serif;
     font-size: 1rem;
 }
@@ -36,16 +38,33 @@ a, a:visited, a:active {
     display: flex;
     flex-direction: column;
 }
+.white-text {
+    color: var(--font-blue);
+}
+.center {
+    text-align: center;
+}
 
-
+.star {
+    position: absolute;
+    background-color: var(--star-on);
+    border-radius: 50%;
+    transition: 2s linear infinite;
+}
 
 /* nav */
 nav {
     color: var(--font-blue);
     justify-content: space-around;
+    background-color: transparent;
 }
 nav ul {
     gap: 8px;
+}
+
+/* main */
+.pad-1x {
+    margin: 2% 4%;
 }
 
 /* landing */
@@ -59,22 +78,18 @@ nav ul {
 #map {
     clip-path: circle(40%);
 }
-.hero-container {
-    display: grid;
-    grid-template-columns: 1fr;
+.hero-container p {
+    margin: 2% 0;
 }
 .hero {
     font-size: 4rem;
     color: var(--font-blue);
     text-align: center;
     z-index: 1;
-    grid-area: 1;
 }
-.heroimg-container {
-    grid-area: 2;
-    display: flex;
-    justify-content: space-between;
-}
+
+/* stars */
+
 
 /* stats */
 #stats {

@@ -26,12 +26,8 @@
             
             <section id="landing" class="flex-c">
                 <div class="hero-container">
+                    <p class="white-text center">A careful balance between budgeting and sustainability. Find your perfect flight today.</p>
                     <h2 class="hero">Where do you want to go?</h2>
-                
-                    <div class="heroimg-container">
-                        <img id="cloud1" alt="icon of cloud shape" src="{{ url_for('static', filename='images/cloud.svg') }}" width="150">
-                        <img id="cloud2" alt="icon of cloud shape" src="{{ url_for('static', filename='images/cloud.svg') }}" width="150">
-                    </div>
                 </div>
                 
                 <img id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
@@ -40,18 +36,60 @@
                 </div>
             </section>
             <section id="stats">
+                <h2>The average flight emits</h2>
+                <p>
 
+                </p>
             </section>
             <section id="facts">
-
+                <h2>About</h2>
             </section>
             
             
         </main>
 
         <script>
+            
             window.addEventListener('DOMContentLoaded', () => {
+
+                function random(range, unit) {
+                let randNum = Math.floor(Math.random() * range) + 1;
+                return `$(randNum)$(unit)`;
+                }
+                function createStar(s) {
+                        let star = document.createElement('div');
+                        star.classList.add('star');
+
+                        let randRange = Math.floor(Math.random() * 5) + 1;
+                        star.classList.add(`blink_${randRange}`);
+
+                        let widthAndHeight = random(s, 'px');
+                        star.style.height = star.style.width = widthAndHeight;
+
+                        star.style.left = random(window.innerWidth, 'px');
+                        star.style.top = random(window.innerHeight, 'px');
+
+                        sky.appendChild(star);
+                    }
+                function renderStar(stars, size) {
+                    while (sky.firstChild) {
+                        sky.removeChild(sky.firstChild);
+                    }
+                    for (let i = 0; i < stars; i++) {
+                        createStar(size);
+                    }
+                }
+
+                let navHeight = document.querySelector('nav').clientHeight;
+
                 
+                let landingContent = document.getElementById('landing');
+                landingContent.style.paddingTop = navHeight * (navHeight * 0.1) + 'px';
+                landingContent.style.height = 'calc(100vh - ' + (navHeight + (navHeight * 0.9)) * 2 + 'px)'; 
+                
+                var sky = document.getElementById('landing');
+                
+                renderStar(20, 3);
             });
         </script>
         
