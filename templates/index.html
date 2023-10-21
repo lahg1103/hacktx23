@@ -12,19 +12,31 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <nav>
+        {% block body %} 
+        <nav class="flex-r">
             <ul class="flex-r">
                 <li><a>Sign in</a></li>
                 <li><a>Sign up</a></li>
-                <li><a>About</a></li>
+                <li><a href="#stats">About</a></li>
+                <li><a href="#facts">Sustainability</a></li>
             </ul>
+            <h1>Airplane App</h1>
         </nav>
         <main>
-            {% block body %} {% endblock %}
-            <section id="landing">
-
+            
+            <section id="landing" class="flex-c">
+                <div class="hero-container">
+                    <h2 class="hero">Where do you want to go?</h2>
+                
+                    <div class="heroimg-container">
+                        <img id="cloud1" alt="icon of cloud shape" src="{{ url_for('static', filename='images/cloud.svg') }}" width="150">
+                        <img id="cloud2" alt="icon of cloud shape" src="{{ url_for('static', filename='images/cloud.svg') }}" width="150">
+                    </div>
+                </div>
+                
+                <img id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
                 <div id="map">
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d65280679.84013041!2d-46.01236969956296!3d-2.981812870361086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1697923484581!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
                 </div>
             </section>
             <section id="stats">
@@ -34,9 +46,18 @@
 
             </section>
             
+            
         </main>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                
+            });
+        </script>
+        
         <footer>
             Airplanes &copy; 2023 
         </footer>
+        {% endblock %}
     </body>
 </html>
