@@ -40,4 +40,7 @@ class AirportSearch:
         api_response = response.json()
 
         city = response.json()["request"]["client"]["geo"]["city"]
-        #return data
+        lat = response.json()["request"]["client"]["geo"]["lat"]
+        lng = response.json()["request"]["client"]["geo"]["lng"]
+
+        return city, lat, lng
