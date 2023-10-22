@@ -9,10 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
-        
-        <script src="{{ url_for('static', filename='script.js')}}"> </script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"> </script>
-
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4"></script>
 
         {% block head %}{% endblock %}
     </head>
@@ -54,12 +51,11 @@
             
             
         </main>
-        <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-            ({key: "AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4", v: "weekly"});</script>
         
         <footer>
             Airplanes &copy; 2023 
         </footer>
         {% endblock %}
+        <script src="{{ url_for('static', filename='script.js')}}"> </script>
     </body>
 </html>
