@@ -154,6 +154,10 @@ nav ul {
     margin-bottom: 1.5rem;
 }
 
+#facts {
+    padding: 4%;
+}
+
 /* footer */
 footer {
     text-align: center;
