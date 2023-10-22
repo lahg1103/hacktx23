@@ -2,6 +2,8 @@ from flask import Flask, render_template, url_for, request, jsonify
 from pymongo import MongoClient
 from python.airport_search import AirportSearch
 import user
+from bson import json_util
+import json
 
 
 app = Flask(__name__)
@@ -10,6 +12,9 @@ app.config['SECRET_KEY'] = 'theSecretKey'
 airportSearch = AirportSearch()
 mongo_uri = "mongodb+srv://Cluster42678:dUVva0d3dVNY@cluster42678.dl8zutk.mongodb.net"
 client = MongoClient(mongo_uri)
+db = client['userData']
+userRecords = db['userRecords']
+flightRecords = db['flightRecords']
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -40,6 +45,12 @@ def process_long_lat():
 @app.route('/user/<userN>')
 def user_page(userN):
     return render_template('user.html', username = userN)
+
+@app.route('/user/<userN>/flights')
+def user_flights(userN):
+    flights = flightRecords.find({"username": userN})
+    return json.dumps(list(flights), default=json_util.default)
+
 
 @app.route('/user/create-user', methods=['GET', 'POST'])
 def create_user():

@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dashboard</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the landing page {{username}}</h1>
 
-    <body>
-        <hi>Welcome to the landing page {{username}}</hi>
-    </body>
+    <h2>Flights Taken</h2>
+    <table id="flights-table">
+        <tr>
+            <th>Distance</th>
+            <th>Carbon</th>
+        </tr>
+        <!-- Rows will be inserted here by JavaScript -->
+    </table>
 
+    <script>
+        fetch('/user/{{username}}/flights')
+            .then(response => response.json())
+            .then(flights => {
+                const table = document.getElementById('flights-table');
+                flights.forEach(flight => {
+                    const row = table.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    cell1.textContent = flight.distance;
+                    cell2.textContent = flight.carbon;
+                });
+            });
+    </script>
+</body>
 </html>
