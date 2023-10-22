@@ -41,8 +41,16 @@ def sign_in(username, password):
 #Flight record api
 
 #create flight record (pass in user)
+# user
+# From, to
+# Carbon
+# Price
+def create_flight_record(userN):
+    return
 
 #Get flight records per user (pass in user)
+def get_flights(userN):
+    return
 
 
 

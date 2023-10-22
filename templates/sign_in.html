@@ -4,27 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
     </head>
 
-    <body>
-        <div style="align-self: center;"> 
-            <h1>Sign In!</h1>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-              <ul>
-              {% for message in messages %}
-                <li>{{ message }}</li>
-              {% endfor %}
-              </ul>
-            {% endif %}
-          {% endwith %}
-            <form action="/user/sign-in" method="post">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required ><br>
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
-                <input type="submit" value="Submit">
-            </form>
+    <body style="background-image: url('../static/images/sign.png');">
+        <nav style="margin-left: 70%;">
+            <h1><a href="/">Carbon Flights</a></h1>
+        </nav>  
+        <h1 style="text-align: center; color: gold; margin-bottom: 2%; margin-top: 18%;">Sign In!</h1>
+        <div style="justify-content: center; display: flex; align-items: center; color: white;"> 
+            <div> {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul>
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}
+                <form action="/user/sign-in" method="post">
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username" required ><br>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" required><br><br>
+                    <input type="submit" value="Submit">
+                </form></div>
+
         
         </div>
     </body>
