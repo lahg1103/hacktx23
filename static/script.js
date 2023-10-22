@@ -1,10 +1,5 @@
 
-  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-    key: "AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4",
-    v: "weekly",
-    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-    // Add other bootstrap parameters as needed, using camel case.
-  });
+
   let map;
 
   async function initMap() {
@@ -17,3 +12,46 @@
   }
   
   initMap();
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+
+    function random(range, unit) {
+    let randNum = Math.floor(Math.random() * range) + 1;
+    return `$(randNum)$(unit)`;
+    }
+    function createStar(s) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+
+            let randRange = Math.floor(Math.random() * 5) + 1;
+            star.classList.add(`blink_${randRange}`);
+
+            let widthAndHeight = random(s, 'px');
+            star.style.height = star.style.width = widthAndHeight;
+
+            star.style.left = random(window.innerWidth, 'px');
+            star.style.top = random(window.innerHeight, 'px');
+
+            sky.appendChild(star);
+        }
+    function renderStar(stars, size) {
+        while (sky.firstChild) {
+            sky.removeChild(sky.firstChild);
+        }
+        for (let i = 0; i < stars; i++) {
+            createStar(size);
+        }
+    }
+
+    let navHeight = document.querySelector('nav').clientHeight;
+
+    
+    let landingContent = document.getElementById('landing');
+    landingContent.style.paddingTop = navHeight * (navHeight * 0.1) + 'px';
+    landingContent.style.height = 'calc(100vh - ' + (navHeight + (navHeight * 0.9)) * 2 + 'px)'; 
+    
+    var sky = document.querySelector('.sky');
+    
+    renderStar(50, 4);
+});
