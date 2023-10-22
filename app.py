@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from pymongo import MongoClient
 from python.airport_search import AirportSearch
+import user
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'theSecretKey'
 
 airportSearch = AirportSearch()
 mongo_uri = "mongodb+srv://Cluster42678:dUVva0d3dVNY@cluster42678.dl8zutk.mongodb.net"
@@ -30,6 +32,26 @@ def process_long_lat():
     airportSearch.user_location()
     return jsonify({'cities': cities, 'countries': countries}) 
 
+#Pass in user id to authenticate and locate user, post?
+@app.route('/user/<userN>')
+def user_page(userN):
+    return render_template('user.html', username = userN)
+
+@app.route('/user/create-user', methods=['GET', 'POST'])
+def create_user():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        return user.create_user(username=  username, password= password)
+    return render_template('new_user.html')
+
+@app.route('/user/sign-in', methods=['GET', 'POST'])
+def sign_in():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        return user.sign_in(username=  username, password= password)
+    return render_template('sign_in.html')    
 
 if __name__ == '__main__':
     app.run(debug=True)
