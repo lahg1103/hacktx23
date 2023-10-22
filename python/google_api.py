@@ -10,13 +10,16 @@ class GoogleSearch:
         params = {
             "origin": flight_info.from_city_code,
             "destination": flight_info.to_city_code,
-            "operatingCarrierCode": 0,
+            "operatingCarrierCode": flight_info.operating_carrier,
             "flightNumber": flight_info.flight_no,
             "departureDate": {
-                "year":2000,
-                "month":2,
-                "day":7
+                "year": flight_info.out_date.split("-")[0],
+                "month": flight_info.out_date.split("-")[1],
+                "day": flight_info.out_date.split("-")[2]
             }
         }
         response = requests.get(url=f"https://travelimpactmodel.googleapis.com/v1/flights:computeFlightEmissions?key={self.api_key}", params=params)
         response.raise_for_status
+        data = response.json()["flightEmission"][0]["emissionGramsPerPax"]
+        
+        return data
