@@ -26,9 +26,9 @@ def process_long_lat():
     dataLat = request.json['data'][0]
     dataLng = request.json['data'][1]
 
-    fox = airportSearch.search(dataLat, dataLng)
+    airports, cities, countries = airportSearch.search(dataLat, dataLng)
     airportSearch.user_location()
-    return jsonify(fox)
+    return jsonify({'cities': cities, 'countries': countries}) 
 
 
 if __name__ == '__main__':
