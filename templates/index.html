@@ -2,39 +2,60 @@
 <html lang="en">
     <head>
         <title>Airplanes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="main.css">
-        <link src="script.js">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4"></script>
+
         {% block head %}{% endblock %}
     </head>
     <body>
-        <nav>
-            <ul>
+        {% block body %} 
+        <nav class="flex-r">
+            <ul class="flex-r">
                 <li><a>Sign in</a></li>
                 <li><a>Sign up</a></li>
-                <li><a>About</a></li>
+                <li><a href="#stats">About</a></li>
+                <li><a href="#facts">Sustainability</a></li>
             </ul>
+            <h1>Airplane App</h1>
         </nav>
         <main>
-            {% block body %} {% endblock %}
-            <section id="landing">
-
-                <div id="map">
-
+            
+            <section id="landing" class="flex-c">
+                <div class="sky"></div>
+                <div class="hero-container">
+                    <p class="white-text center">A careful balance between budgeting and sustainability. Find your perfect flight today.</p>
+                    <h2 class="hero">Where do you want to go?</h2>
                 </div>
+                
+                
+                <div id="map">
+                    
+                </div>
+                <button method="GET" action="/form" ></button>
             </section>
-            <section id="stats">
-
+            <section id="stats" class="center">
+                <h2>The average flight emits</h2>
+                <h3>90kg of CO2 per passenger per hour.</h3>
+                <h2>On average global aviation emissions are around</h2>
+                <h3>1 Billion tons of CO2 per year.</h3>
             </section>
             <section id="facts">
-
+                <h2>About</h2>
             </section>
             
+            
         </main>
+        
         <footer>
             Airplanes &copy; 2023 
         </footer>
+        {% endblock %}
+        <script src="{{ url_for('static', filename='script.js')}}"> </script>
     </body>
 </html>
