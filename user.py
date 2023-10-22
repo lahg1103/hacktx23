@@ -6,6 +6,7 @@ mongo_uri = "mongodb+srv://Cluster42678:dUVva0d3dVNY@cluster42678.dl8zutk.mongod
 client = MongoClient(mongo_uri)
 db = client['userData']
 userRecords = db['userRecords']
+flightRecords = db['flightRecords']
 
 
 def main():
@@ -30,9 +31,20 @@ def create_user(username, password):
 
 def sign_in(username, password):
     if check_exists({"username":username, "password": password}):
-        return redirect(url_for('user_page', userN = username))   
+        #flights = list(flightRecords.find({"username": username}))
+        flights = list(flightRecords.find())
+        return redirect(url_for('user_page', userN = username, fights = flights))   
     flash('incorrect username or password, please try again')
     return render_template('sign_in.html')
+
+
+#Flight record api
+
+#create flight record (pass in user)
+
+#Get flight records per user (pass in user)
+
+
 
 
 
