@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+  <head>
+    <style>
+        
+        #map {
+        height: 100%;
+        clip-path: circle(40%);
+        }
+        html,
+        body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }
+    </style>
+    <title>Carbon Planes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+        {% block head %}{% endblock %}
+  </head>
+  <body>
+    <nav class="flex-r">
+        <ul class="flex-r">
+            <li><a>Sign in</a></li>
+            <li><a>Sign up</a></li>
+            <li><a href="#stats">About</a></li>
+            <li><a href="#facts">Sustainability</a></li>
+        </ul>
+        <h1>Carbon Planes</h1>
+    </nav>
+    <section id="landing" class="flex-c">
+        <p class="white-text center">A careful balance between budgeting and sustainability. Find your perfect flight today.</p>
+        <h2 class="hero">Where do you want to go?</h2>
+        <img id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
+        
+    </section>
+    <div id="map"></div>
+    <section id="stats" class="center">
+        <h2>The average flight emits</h2>
+        <h3>90kg of CO2 per passenger per hour.</h3>
+        <h2>On average global aviation emissions are around</h2>
+        <h3>1 Billion tons of CO2 per year.</h3>
+    </section>
+    <section id="facts">
+        <h2>About</h2>
+    </section>
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4&callback=initMap&v=weekly"
+      defer
+    ></script>
+    <script>
+
+        function initMap() {
+        const myLatlng = { lat: -25.363, lng: 131.044 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 2,
+            center: myLatlng,
+            restriction: {
+                latLngBounds: {
+                north: 80,
+                south: -80,
+                east: 180,
+                west: -180,
+                },
+            },
+
+        });
+        // Create the initial InfoWindow.
+        let infoWindow = new google.maps.InfoWindow({
+            content: "Click the map to get Lat/Lng!",
+            position: myLatlng,
+        });
+
+        infoWindow.open(map);
+        // Configure the click listener.
+        map.setOptions({draggable: true, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
+        map.addListener("click", (mapsMouseEvent) => {
+            // Close the current InfoWindow.
+            infoWindow.close();
+            // Create a new InfoWindow.
+            infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng,
+            });
+            infoWindow.setContent(
+            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
+            );
+            infoWindow.open(map);
+        });
+        }
+
+        window.initMap = initMap;
+    </script>
+  </body>
+</html>
