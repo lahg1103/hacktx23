@@ -57,12 +57,17 @@ class FlightSearch:
             "fly_to": city_to_fly,
             "date_fly": date_from,
             "date_to": date_to,
-            "nights_in_dst_from": 7,
-            "nights_in_dst_to": 28,
             "one_for_city": 1,
             "curr": "USD",
-            "max_stopovers": 0
+            "max_stopovers": 0,
+
         }
 
+        response = requests.get(url=self.url, params=parameters, headers=header)
+        response.raise_for_status()
+
+        data = response.json()["data"][0]
+        return data
+        
 
 
