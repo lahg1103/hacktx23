@@ -16,34 +16,48 @@
 
   window.addEventListener('DOMContentLoaded', () => {
 
-    // function random(range, unit) {
-    // let randNum = Math.floor(Math.random() * range) + 1;
-    // return `$(randNum)$(unit)`;
-    // }
-    // function createStar(s) {
-    //         let star = document.createElement('div');
-    //         star.classList.add('star');
 
-    //         let randRange = Math.floor(Math.random() * 5) + 1;
-    //         star.classList.add(`blink_${randRange}`);
 
-    //         let widthAndHeight = random(s, 'px');
-    //         star.style.height = star.style.width = widthAndHeight;
+    function initMap() {
+        const myLatlng = { lat: -25.363, lng: 131.044 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 2,
+            center: myLatlng,
+            restriction: {
+                latLngBounds: {
+                north: 80,
+                south: -80,
+                east: 180,
+                west: -180,
+                },
+            },
 
-    //         star.style.left = random(window.innerWidth, 'px');
-    //         star.style.top = random(window.innerHeight, 'px');
+        });
+        // Create the initial InfoWindow.
+        let infoWindow = new google.maps.InfoWindow({
+            content: "Click the map to get Lat/Lng!",
+            position: myLatlng,
+        });
 
-    //         sky.appendChild(star);
-    //     }
-    // function renderStar(stars, size) {
-    //     while (sky.firstChild) {
-    //         sky.removeChild(sky.firstChild);
-    //     }
-    //     for (let i = 0; i < stars; i++) {
-    //         createStar(size);
-    //     }
-    // }
+        infoWindow.open(map);
+        // Configure the click listener.
+        map.setOptions({draggable: true, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
+        map.addListener("click", (mapsMouseEvent) => {
+            // Close the current InfoWindow.
+            infoWindow.close();
+            // Create a new InfoWindow.
+            infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng,
+            });
+            infoWindow.setContent(
+            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
+            );
+            infoWindow.open(map);
+        });
+        }
 
+        window.initMap = initMap;
+        
     let navHeight = document.querySelector('nav').clientHeight;
 
     
@@ -51,7 +65,6 @@
     landingContent.style.paddingTop = navHeight * (navHeight * 0.1) + 'px';
     landingContent.style.height = 'calc(100vh - ' + (navHeight + (navHeight * 0.9)) * 2 + 'px)'; 
     
-    // var sky = document.querySelector('.sky');
-    
-    // renderStar(50, 4);
+
+
 });
