@@ -1,7 +1,11 @@
 from flask import Flask, render_template, url_for, request, jsonify
 from pymongo import MongoClient
 
+
 app = Flask(__name__)
+
+mongo_uri = "mongodb+srv://Cluster42678:dUVva0d3dVNY@cluster42678.dl8zutk.mongodb.net"
+client = MongoClient(mongo_uri)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
