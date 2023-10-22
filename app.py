@@ -18,5 +18,11 @@ def submit():
     address = request.form.get('address')
     return f"You submitted the address: {address}"
 
+@app.route('/process_long_lat', methods=['POST'])
+def process_long_lat():
+    data = request.json['data']
+    return jsonify({'data': data})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
