@@ -1,21 +1,26 @@
 import requests
-from flight_data import FlightData
+from python.flight_data import FlightData
+import datetime as dt
+from datetime import timedelta
 
 class GoogleSearch:
     def __init__(self):
         self.api_key = "AIzaSyC4pBLI_aO1wN9PfO3Z7Ebq9bcgPM-0BkQ"
+        self.today = dt.datetime.now().strftime("%d/%m/%Y")
+        self.sixmonths = dt.datetime.now() + timedelta(days=(6 * 30))
+        self.next_date = 
 
-    def search(self):
-        flight_info = FlightData()
+    def search(self, origin, destination, operatingCarrierCode, flightNumber):
+    #flight_info = FlightData()
         params = {
-            "origin": flight_info.from_city_code,
-            "destination": flight_info.to_city_code,
-            "operatingCarrierCode": flight_info.operating_carrier,
-            "flightNumber": flight_info.flight_no,
+            "origin": origin,
+            "destination": destination,
+            "operatingCarrierCode": operatingCarrierCode,
+            "flightNumber": flightNumber,
             "departureDate": {
-                "year": flight_info.out_date.split("-")[0],
-                "month": flight_info.out_date.split("-")[1],
-                "day": flight_info.out_date.split("-")[2]
+                "year": self.next_date.split("-")[0],
+                "month": self.next_date.split("-")[1],
+                "day": self.next_date.split("-")[2]
             }
         }
         response = requests.get(url=f"https://travelimpactmodel.googleapis.com/v1/flights:computeFlightEmissions?key={self.api_key}", params=params)

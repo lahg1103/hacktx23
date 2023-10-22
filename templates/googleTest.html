@@ -48,9 +48,9 @@
     <div id="map"></div>
     <section class="center" style=" height: fit-content ; color: white;">
       <div id="fo">
-        <form action="" method="post" style="font-size: x-large; padding-bottom: 1%;">
+        <form action="/process_from_to_dates" method="post" style="font-size: x-large; padding-bottom: 1%;">
           <label for="from">From:</label>
-          <input type="date" id="from" name="from" required >
+          <input type="date" id="from" name="from" required>
           <label for="to">To:</label>
           <input type="date" id="to" name="to" required>
           <input type="submit" value="Submit" style="font: large; padding: .5%; align-self: center; margin-left: 2%;">
@@ -126,6 +126,11 @@
 
               console.log(city)
               console.log((country))
+
+              
+
+
+
               infoWindow.setContent("Flying to: " + city +", " + country);
 
             }) 
