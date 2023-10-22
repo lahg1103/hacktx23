@@ -35,8 +35,8 @@ a, a:visited, a:active {
     display: flex;
 }
 .flex-c {
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 }
 .white-text {
     color: var(--font-blue);
@@ -63,15 +63,17 @@ nav ul {
 
 /* landing */
 #landing {
-    gap: 16px;
+    gap: 10%;
     align-items: center;
     margin-top: 4%;
     position: relative;
+    height: fit-content;
 }
 #map {
     clip-path: circle(40%);
     height: 100%;
     width: 100%;
+    text-align:  center;
 }
 .hero-container p {
     margin: 2% 0;

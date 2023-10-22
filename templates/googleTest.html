@@ -15,7 +15,7 @@
         padding: 0;
         }
     </style>
-    <title>Carbon Planes</title>
+    <title>Carbon Flights</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,21 +30,36 @@
   <body>
     <nav class="flex-r">
         <ul class="flex-r">
-            <li><a href="/user/sign-in">Sign in</a></li>
+            <li><a href="/user/sign-in" ><strong>Sign In</strong></a></li>
             <li><a href="/user/create-user">Sign up</a></li>
             <li><a href="#stats">About</a></li>
             <li><a href="#facts">Sustainability</a></li>
         </ul>
-        <h1>Carbon Planes</h1>
+        <h1>Carbon Flights</h1>
     </nav>
     <section id="landing" class="flex-c">
-        <p class="white-text center">A careful balance between budgeting and sustainability. Find your perfect flight today.</p>
+
+        <p class="white-text center"><em>A careful balance between budgeting and sustainability.<br> Find your perfect flight today.</em></p>
         <h2 class="hero">Where do you want to go?</h2>
-        <img id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
-        
+        <img  id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
+    
     </section>
+
     <div id="map"></div>
+    <section class="center" style=" height: fit-content ; color: white;">
+      <div id="fo">
+        <form action="" method="post" style="font-size: x-large; padding-bottom: 1%;">
+          <label for="from">From:</label>
+          <input type="date" id="from" name="from" required >
+          <label for="to">To:</label>
+          <input type="date" id="to" name="to" required>
+          <input type="submit" value="Submit" style="font: large; padding: .5%; align-self: center; margin-left: 2%;">
+      </form>
+      </div>
+    </section>
+    
     <section id="stats" class="center">
+
         <h2>The average flight emits</h2>
         <h3>90kg of CO2 per passenger per hour.</h3>
         <h2>On average global aviation emissions are around</h2>
@@ -78,7 +93,7 @@
         });
         // Create the initial InfoWindow.
         let infoWindow = new google.maps.InfoWindow({
-            content: "Click the map to get Lat/Lng!",
+            content: "Choose Your Destination!",
             position: myLatlng,
         });
 
