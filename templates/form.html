@@ -2,6 +2,7 @@
 {% block head %}
 {% blockend %}
 {% block content %}
+    {{ super() }}
     <h1>But first, let's get your location</h1>
     <form method="POST" action="/submit">
         <label for="address">Address:</label>

@@ -8,7 +8,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <link src="script.js">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+        <script src="script.js"> </script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4&callback=initMap">
+        </script>
+
         {% block head %}{% endblock %}
     </head>
     <body>
@@ -25,6 +29,7 @@
         <main>
             
             <section id="landing" class="flex-c">
+                <div class="sky"></div>
                 <div class="hero-container">
                     <p class="white-text center">A careful balance between budgeting and sustainability. Find your perfect flight today.</p>
                     <h2 class="hero">Where do you want to go?</h2>
@@ -32,14 +37,15 @@
                 
                 <img id="pin" alt="icon of pin" src="{{ url_for('static', filename='images/pin.svg') }}" width="80">
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d65280679.84013041!2d-46.01236969956296!3d-2.981812870361086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1697923484581!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                    
                 </div>
+                <button method="GET" action="/form" ></button>
             </section>
             <section id="stats">
                 <h2>The average flight emits</h2>
-                <p>
-
-                </p>
+                <h3>90kg of CO2 per passenger per hour.</h3>
+                <h2>On average global aviation emissions are around</h2>
+                <h3>1 Billion tons of CO2 per year.</h3>
             </section>
             <section id="facts">
                 <h2>About</h2>
@@ -87,12 +93,11 @@
                 landingContent.style.paddingTop = navHeight * (navHeight * 0.1) + 'px';
                 landingContent.style.height = 'calc(100vh - ' + (navHeight + (navHeight * 0.9)) * 2 + 'px)'; 
                 
-                var sky = document.getElementById('landing');
+                var sky = document.querySelector('.sky');
                 
-                renderStar(20, 3);
+                renderStar(50, 4);
             });
         </script>
-        
         <footer>
             Airplanes &copy; 2023 
         </footer>

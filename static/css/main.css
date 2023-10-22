@@ -45,12 +45,7 @@ a, a:visited, a:active {
     text-align: center;
 }
 
-.star {
-    position: absolute;
-    background-color: var(--star-on);
-    border-radius: 50%;
-    transition: 2s linear infinite;
-}
+
 
 /* nav */
 nav {
@@ -89,7 +84,27 @@ nav ul {
 }
 
 /* stars */
-
+.star {
+    position: absolute;
+    background-color: var(--star-on);
+    border-radius: 50%;
+    animation: 2s linear alternative;
+}
+.blink1 {
+    animation: blink1;
+}
+.blink2 {
+    animation: blink2;
+}
+.blink3 {
+    animation: blink3;
+}
+.blink4 {
+    animation: blink4;
+}
+.blink5 {
+    animation: blink5;
+}
 
 /* stats */
 #stats {
@@ -99,4 +114,46 @@ nav ul {
 /* footer */
 footer {
     text-align: center;
+} 
+
+
+@keyframes blink_1 {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    10% {
+        background-color: var(--star-off);
+    }
+}
+@keyframes blink_2 {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    40% {
+        background-color: var(--star-off);
+    }
+}
+@keyframes blink_3 {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    40% {
+        background-color: var(--star-off);
+    }
+}
+@keyframes blink_4 {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    80% {
+        background-color: var(--star-off);
+    }
+}
+@keyframes blink_5 {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    50% {
+        background-color: var(--star-off);
+    }
 }
