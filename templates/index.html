@@ -30,10 +30,10 @@
   <body>
     <nav class="flex-r">
         <ul class="flex-r">
-            <li><a href="/user/sign-in" ><strong>Sign In</strong></a></li>
-            <li><a href="/user/create-user">Sign up</a></li>
-            <li><a href="#stats">About</a></li>
-            <li><a href="#facts">Sustainability</a></li>
+            <li class="nav-link"><a href="/user/sign-in"><strong>Sign In</strong></a></li>
+            <li class="nav-link"><a href="/user/create-user">Sign up</a></li>
+            <li class="nav-link"><a href="#stats">About</a></li>
+            <li class="nav-link"><a href="#facts">Sustainability</a></li>
         </ul>
         <h1><a href="/">Carbon Flights</a></h1>
     </nav>
@@ -48,6 +48,7 @@
       <div id="map"></div>
     </div>
     
+    
     <section class="center" style=" height: fit-content ; color: white;">
       <div id="fo">
         <form action="" method="post" style="font-size: x-large; padding-bottom: 1%;">
@@ -60,7 +61,7 @@
       </div>
     </section>
     
-    <section id="stats" class="center">
+    <section id="stats" class="center white-text">
 
         <h2>The average flight emits</h2>
         <h3>90kg of CO2 per passenger per hour.</h3>
@@ -70,11 +71,34 @@
     <section id="facts">
         <h2>About</h2>
     </section>
-    
+    <div id="starry-background">
+    </div>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNe4idIyGM4BwP_cVrOTRr9r4zVHIBUz4&callback=initMap&v=weekly"
       defer
     ></script>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+      var numStars = 75; 
+      var starContainer = document.getElementById('starry-background');
+
+
+  for (let i = 0; i < numStars; i++) {
+
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = Math.random() * 5 + 'px'; // Random star size
+      star.style.height = star.style.width;
+      star.style.left = Math.random() * 100 + '%'; // Random horizontal position
+      star.style.top = Math.random() * 100 + '%'; // Random vertical position
+      star.style.animationDuration = Math.random() * 5 + 2 + 's'; // Random twinkle speed
+      starContainer.appendChild(star);
+  }
+      })
+      
+  </script>
+    
     <script>
 
         function initMap() {
