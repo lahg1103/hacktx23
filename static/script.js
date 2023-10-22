@@ -16,7 +16,19 @@
 
   window.addEventListener('DOMContentLoaded', () => {
 
+    const numStars = 75; 
+    const starContainer = document.getElementById('starry-background');
 
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 5 + 'px'; // Random star size
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + 'px'; // Random horizontal position
+            star.style.top = Math.random() * 100 + 'px'; // Random vertical position
+            star.style.animationDuration = Math.random() * 5 + 2 + 's'; // Random twinkle speed
+            starContainer.appendChild(star);
+        }
 
     function initMap() {
         const myLatlng = { lat: -25.363, lng: 131.044 };
@@ -65,6 +77,6 @@
     landingContent.style.paddingTop = navHeight * (navHeight * 0.1) + 'px';
     landingContent.style.height = 'calc(100vh - ' + (navHeight + (navHeight * 0.9)) * 2 + 'px)'; 
     
-
+    
 
 });

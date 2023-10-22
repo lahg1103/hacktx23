@@ -3,11 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          *,*::before,*::after {
+            margin: 0;
+            padding: 0;
+          }
+          body {
+            display: flex;
+            background-color: #272B32;
+            color: #C8E5FF;
+          }
+          .center {
+            justify-self: center;
+            text-align: center;
+            align-items: center;
+          }
+        </style>
         <title>Register</title>
     </head>
 
     <body>
-        <div style="align-self: center;"> 
+        <div class="center"> 
             <h1>Sign In!</h1>
             {% with messages = get_flashed_messages() %}
             {% if messages %}

@@ -1,3 +1,12 @@
+@keyframes twinkle {
+    0%, 100% {
+        background-color: var(--star-on);
+    }
+    50% {
+        background-color: var(--star-off);
+    }
+}
+
 :root {
     --font-blue : #C8E5FF;
     --background-blue: #272B32;
@@ -11,6 +20,7 @@
     padding: 0;
 }
 body {
+    position: relative;
     background-color: var(--background-blue);
     overflow-x: none;
     scroll-behavior: smooth;
@@ -55,6 +65,26 @@ nav {
 nav ul {
     gap: 8px;
 }
+.nav-link {
+    position: relative;
+}
+.nav-link:after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--font-blue);
+    transition: 300ms;
+}
+.nav-link:hover:after {
+    width: 100%;
+}
+.nav-link:not(:hover):after {
+    right: 0;
+    left: auto;
+}
 
 
 /* landing */
@@ -69,13 +99,27 @@ nav ul {
     width: 100vw;
     height: 100%;
     filter: drop-shadow(0px 0px 12px rgba(255,255,255,0.6));
+    position: relative;
 }
 #map {
     clip-path: circle(30%);
     height: 100%;
     width: 100%;
     text-align:  center;
+    position: relative;
 }
+#map::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.6);
+    clip-path: circle(40%);
+}
+
 
 .hero {
     font-size: 4rem;
@@ -85,27 +129,21 @@ nav ul {
 }
 
 /* stars */
+#starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 .star {
     position: absolute;
     background-color: var(--star-on);
     border-radius: 50%;
-    animation: 2s linear alternative;
+    animation: 2s twinkle infinite alternate linear;
 }
-.blink1 {
-    animation: blink1;
-}
-.blink2 {
-    animation: blink2;
-}
-.blink3 {
-    animation: blink3;
-}
-.blink4 {
-    animation: blink4;
-}
-.blink5 {
-    animation: blink5;
-}
+
 
 /* footer */
 footer {
@@ -113,43 +151,10 @@ footer {
 } 
 
 
-@keyframes blink_1 {
-    0%, 100% {
-        background-color: var(--star-on);
-    }
-    10% {
-        background-color: var(--star-off);
-    }
-}
-@keyframes blink_2 {
-    0%, 100% {
-        background-color: var(--star-on);
-    }
-    40% {
-        background-color: var(--star-off);
-    }
-}
-@keyframes blink_3 {
-    0%, 100% {
-        background-color: var(--star-on);
-    }
-    40% {
-        background-color: var(--star-off);
-    }
-}
-@keyframes blink_4 {
-    0%, 100% {
-        background-color: var(--star-on);
-    }
-    80% {
-        background-color: var(--star-off);
-    }
-}
-@keyframes blink_5 {
-    0%, 100% {
-        background-color: var(--star-on);
-    }
-    50% {
-        background-color: var(--star-off);
-    }
+
+.test-star {
+    height: 5px;
+    width: 5px;
+    top: 25px;
+    left: 25px;
 }
