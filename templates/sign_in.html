@@ -6,7 +6,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <title>Register</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
+        <title>Register - Carbon Flights</title>
         <style>
           :root {
               --font-blue : #C8E5FF; 
@@ -21,6 +22,27 @@
             width: 100%;
             z-index: -1;
           }
+
+          .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            width: 0px;
+            height: 2px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--font-blue);
+            transition: 300ms;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .nav-link:not(:hover):after {
+            right: 0;
+            left: auto;
+        }
           
           button {
             background-color: transparent;
@@ -66,7 +88,7 @@
 
     <body style="background-image: url('../static/images/sign.png');">
         <nav style="margin-left: 70%;">
-            <h1><a href="/">Carbon Flights</a></h1>
+            <h1><a href="/" class="nav-link">Carbon Flights</a></h1>
         </nav>  
         <h1 style="text-align: center; color: rgb(255, 215, 0); margin-bottom: 2%; margin-top: 18%;">Sign In!</h1>
         <div style="justify-content: center; display: flex; align-items: center; color: white;"> 

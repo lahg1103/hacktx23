@@ -13,7 +13,7 @@
     --star-on: #F6D98C;
     --star-off: transparent;
     font-family: 'Roboto', Arial, Helvetica, system-ui, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 *, *::before, *::after {
     margin: 0;
@@ -40,7 +40,7 @@ a, a:visited, a:active {
     text-decoration: none;
 }
 button {
-    background: none;
+    background-color: transparent;
     border: none;
 }
 
@@ -162,10 +162,15 @@ footer {
 
 
 .submitbutton {
-    outline: 1px solid var(--font-blue);
+    border: 3px solid var(--font-blue);
     color: var(--font-blue);
-    background-color: none;
-    border-radius: 1px;
-    padding: 1rem;
+    background-color: transparent;
+    padding: 2rem;
     font-size: 1.1rem;
+    border-radius: 2px;
+    transition: background-color 500ms;
+}
+.submitbutton:hover {
+    background-color: rgba(0,0,0,0.3);
+    cursor: pointer;
 }
