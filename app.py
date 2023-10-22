@@ -27,7 +27,10 @@ def process_long_lat():
     dataLng = request.json['data'][1]
 
     airports, cities, countries = airportSearch.search(dataLat, dataLng)
-    airportSearch.user_location()
+    user_loc = airportSearch.user_location()
+
+
+
     return jsonify({'cities': cities, 'countries': countries}) 
 
 
