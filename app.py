@@ -13,7 +13,8 @@ client = MongoClient(mongo_uri)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('googleTest.html')
+    return render_template('index.html')
+
 @app.route('/hello')
 def form():
     return render_template('form.html')
